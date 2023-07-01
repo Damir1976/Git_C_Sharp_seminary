@@ -4,19 +4,20 @@
 // 12821 -> да
 // 23432 -> да
 
-int num,r,sum=0,t;
-Console.Write(«Введите пятизначное число: «);
-num = Convert.ToInt32(Console.ReadLine());
-if(num>9999 && num<100000)
+Console.Write("Введите пятизначное число: ");
+int number = Convert.ToInt32(Console.ReadLine());
+int rebmun,a,b=0;
+if (number > 9999 && number < 100000)
 {
-for(t=num;num!=0;num=num/10)
+for (rebmun = number; number != 0; number = number/10)
 {
-r=num % 10;
-sum=sum*10+r;
+a = number % 10;
+b = b*10+a;
 }
-if(t==sum)
-Console.Write($»{t} является палиндромом.»);
+if (rebmun == b)
+Console.Write($"Число {rebmun} является палиндромом");
 else
-Console.Write($»{t} не является палиндромом.»);
-} else
-Console.Write(«Введите пятизначное число! «);
+Console.Write($"Число {rebmun} не является палиндромом");
+} 
+else
+Console.Write("К сожалению вы ввели не пятизначное число!!!");
