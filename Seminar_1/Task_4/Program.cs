@@ -14,28 +14,27 @@ Console.Write("Введите третье число: ");
 string? numberThree = Console.ReadLine();
 int number3 = Convert.ToInt32(numberThree);
 if (number1 > number2)
+{
+    if (number1 > number3)
     {
-       if (number1 > number3)
-            {
-                Console.Write("Максимальное число: ");
-                Console.WriteLine(number1);
-            }
-    }   
-else       
-    if (number3 > number2)
-       {
-            Console.Write("Максимальное число: ");
-            Console.WriteLine(number3);
-       }  
-    else
-       {
-            Console.Write("Максимальное число: ");
-            Console.WriteLine(number2);
-       }  
-if (number1 == number2)
-    {
-        if (number2 == number3)
-            {
-                Console.WriteLine("Все числа равны между собой");
-            }    
+        Console.Write("Максимальное число: ");
+        Console.WriteLine(number1);
     }
+}
+else if (number3 > number2)
+{
+    Console.Write("Максимальное число: ");
+    Console.WriteLine(number3);
+}
+else
+{
+    Console.Write("Максимальное число: ");
+    Console.WriteLine(number2);
+}
+if (number1 == number2)
+{
+    if (number2 == number3)
+    {
+        Console.WriteLine("Все числа равны между собой");
+    }
+}
