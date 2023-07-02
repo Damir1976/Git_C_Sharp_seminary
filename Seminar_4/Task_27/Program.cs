@@ -4,31 +4,23 @@
 // 9012 -> 12
 
 
-
-Console.Write(«Введите число: «);
-int a = Convert.ToInt32(Console.ReadLine());
-int len = Length(a);
-Console.Write($»Сумма цифр в числе {a} равно: {Sum(a,len)}»);
-
-// Подсчет количества символов в числе
-int Length(int a)
+int ReadInt()
 {
-int index = 0;
-while (a > 0)
-{
-a /= 10;
-index++;
-}
-return index;
+    Console.Write("Введите любое число: ");
+    int number = Convert.ToInt32(Console.ReadLine());
+    return number;
 }
 
-int Sum(int a, int len)
+int Summa(int A)
 {
-int sum = 0;
-for (int i = 1; i <= len; i++)
-{
-sum += a % 10;
-a /= 10;
+    int summ = 0;
+    while (A > 0)
+    {
+        summ += A % 10;
+        A = A / 10;
+    }
+    return summ;
 }
-return sum;
-}
+
+int A = ReadInt();
+Console.Write($"Сумма цифр в числе {A} равна = {Summa(A)}");
