@@ -3,30 +3,30 @@
 //            [3, 7, 23, 12] -> 19
 //            [-4, -6, 89, 6] -> 0
 
-Console.Write("Введите количество элементов массива: ");
+Console.Write("Введите количество элементов в массиве: ");
 int a = Convert.ToInt32(Console.ReadLine());
-int[] randomArray = new int[a];
+int[] array = new int[a];
 
-void mas(int a)
+void massiv(int a)
 {
     for (int i = 0; i < a; i++)
     {
-        randomArray[i] = new Random().Next(1, 100);
-        Console.Write(randomArray[i] + ", ");
+        array[i] = Random.Shared.Next(0, 100);
+        Console.Write(array[i] + ", ");
     }
 }
 
-int kol(int[] randomArray)
+int kol(int[] array)
 {
     int sum = 0;
-    int i = 0;
-    while (i < randomArray.Length)
+    int i = 1;
+    while (i < array.Length)
     {
-        sum = sum + randomArray[i];
+        sum = sum + array[i];
         i = i + 2;
     }
     return sum;
 }
 
-mas(a);
-Console.Write($"\nCумма элементов, стоящих на нечётных индексах: {kol(randomArray)}");
+massiv(a);
+Console.Write($"\n Сумма числе, стоящих на нечётных индексах массива = {kol(array)}");
