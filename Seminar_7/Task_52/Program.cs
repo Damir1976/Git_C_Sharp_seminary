@@ -32,8 +32,8 @@ void srednee(int m, int n)
     Random rand = new Random();
     for (int j = 0; j < n; j++)
     {
-        int summa = 0;
-        int s = 0;
+        double summa = 0;       // было int summa = 0;
+        double s = 0;           // было int s = 0;
         for (int i = 0; i < m; i++)
         {
             summa = summa + randomArray[i, j];

@@ -15,27 +15,31 @@ Console.Write("Введите позицию строки: ");
 int positionM = Convert.ToInt32(Console.ReadLine());
 Console.Write("Введите позицию столбца: ");
 int positionN = Convert.ToInt32(Console.ReadLine());
+
 void massiv(int m, int n)
 {
     Random rand = new Random();
     for (int i = 0; i < m; i++)
     {
-        // Console.WriteLine();
         for (int j = 0; j < n; j++)
         {
-            // randomArray[i, j] = rand.NextDouble();
             randomArray[i, j] = Random.Shared.Next(1, 10);
             Console.Write($"{randomArray[i, j]}, ");
         }
         Console.WriteLine();
     }
 }
+
 massiv(m, n);
-if (positionM <= m - 1 && positionN <= n - 1)
+
+if (positionM <= randomArray.GetLength(0) && positionN-1 <= randomArray.GetLength(1)) 
+        // было  if (positionM <= m - 1 && positionN <= n - 1)
 {
-    Console.Write($"Значение элемента = {randomArray[positionM - 1, positionN - 1]} ");
+    Console.Write($"Значение элемента = {randomArray[positionM-1, positionN-1]} ");
 }
-if (positionM > m - 1 || positionN > n - 1)
+if (positionM > randomArray.GetLength(0) || positionN > randomArray.GetLength(1))      
+        // было  if (positionM > m - 1 || positionN > n - 1)
 {
     Console.Write("Такого элемента в массиве нет");
 }
+
