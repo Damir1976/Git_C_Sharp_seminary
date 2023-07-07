@@ -6,10 +6,6 @@
 //              5 1 2 8
 //              6 9 1 3
 
-
-
-
-
 const int ROWS = 5;
 const int COLUMNS = 4;
 int[,] GetRandomMatrix(int rows, int columns)
