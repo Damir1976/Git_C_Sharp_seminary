@@ -6,21 +6,18 @@
 //             8 4 2 4
 //             Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
 
-
-Console.Write("Введите размерность двумерного массива по M: ");
+Console.Write("Введите размерность двумерного массива по строкам (M): ");
 int m = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите размерность двумерного массива по N: ");
+Console.Write("Введите размерность двумерного массива по столбцам (N): ");
 int n = Convert.ToInt32(Console.ReadLine());
 int[,] randomArray = new int[m, n];
 
-void mas(int m, int n)
+void massiv(int m, int n)
 {
-    int i,
-        j;
     Random rand = new Random();
-    for (i = 0; i < m; i++)
+    for (int i = 0; i < m; i++)
     {
-        for (j = 0; j < n; j++)
+        for (int j = 0; j < n; j++)
         {
             randomArray[i, j] = rand.Next(1, 9);
             Console.Write($"{randomArray[i, j]} ");
@@ -29,21 +26,21 @@ void mas(int m, int n)
     }
 }
 
-void arif(int m, int n)
+void srednee(int m, int n)
 {
     Console.Write("Среднее арифметическое каждого столбца: ");
-    int i,
-        j;
     Random rand = new Random();
-    for (j = 0; j < n; j++)
+    for (int j = 0; j < n; j++)
     {
-        double sum = 0;
-        for (i = 0; i < m; i++)
+        int summa = 0;
+        int s = 0;
+        for (int i = 0; i < m; i++)
         {
-            sum = sum + randomArray[i, j];
+            summa = summa + randomArray[i, j];
+            s++;
         }
-        Console.Write($"{sum / (i):F1}; ");
+        Console.Write($"{summa / s:F1}; ");
     }
 }
-mas(m, n);
-arif(m, n);
+massiv(m, n);
+srednee(m, n);
