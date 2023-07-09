@@ -9,7 +9,8 @@
 Console.Write("Задайте размер двух матриц: ");
 int m = Convert.ToInt32(Console.ReadLine());
 int n = m;
-int[,] randomArray = new int[m, n];
+int[,] randomArray1 = new int[m, n];
+int[,] randomArray2 = new int[m, n];
 
 void massiv(int m, int n)
 {
@@ -18,19 +19,42 @@ void massiv(int m, int n)
     {
         for (int j = 0; j < n; j++)
         {
-            randomArray[i, j] = rand.Next(1, 10);
+            randomArray1[i, j] = rand.Next(1, 6);
+            randomArray2[i, j] = rand.Next(6, 10);
         }
     }
 }
 
-void printmassiv(int[,] array)
+void printmassiv(int[,] randomArray)
 {
-    for (int i = 0; i < array.GetLength(0); i++)
+    for (int i = 0; i < randomArray.GetLength(0); i++)
     {
-        for (int j = 0; j < array.GetLength(1); j++)
+        for (int j = 0; j < randomArray.GetLength(1); j++)
         {
-            Console.Write($"{array[i, j]} ");
+            Console.Write($"{randomArray[i, j]} ");
         }
         Console.WriteLine();
     }
 }
+
+static int[,] doublemas(int[,] randomArray1, int[,] randomArray2)
+{
+    var doublemassiv = new int[randomArray1.GetLength(0), randomArray2.GetLength(1)];
+    for (int i = 0; i < doublemassiv.GetLength(0); i++)
+    {
+        for (int j = 0; j < doublemassiv.GetLength(1); j++)
+        {
+            doublemassiv[i, j] += randomArray1[i, j] * randomArray2[i, j];
+        }
+    }
+    //}
+    return doublemassiv;
+}
+
+massiv(m, n);
+Console.WriteLine("Сгеренированная 1-я матрица: ");
+printmassiv(randomArray1);
+Console.WriteLine("Сгеренированная 2-я матрица: ");
+printmassiv(randomArray2);
+Console.WriteLine("Результирующая матрица (произведение 2-х матриц): ");
+printmassiv(doublemas(randomArray1, randomArray2));
