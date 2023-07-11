@@ -1,4 +1,4 @@
-﻿// Задача 60.  Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. 
+﻿// Задача 60.  Сформируйте трёхмерный массив из неповторяющихся двузначных чисел.
 //             Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
 //             Массив размером 2 x 2 x 2
 //             66(0,0,0) 25(0,1,0)
@@ -7,17 +7,13 @@
 //             26(1,0,1) 55(1,1,1)
 
 Console.WriteLine("Задайте размерность трехмерного массива по M, по N и по O - ");
-int m = InputNumbers("Введите M: ");
-int n = InputNumbers("Введите N: ");
-int o = InputNumbers("Введите O: ");
+Console.Write("Введите M: ");
+int m = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите N: ");
+int n = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите O: ");
+int o = Convert.ToInt32(Console.ReadLine());
 int[,,] array = new int[m, n, o];
-
-int InputNumbers(string input)
-{
-    Console.Write(input);
-    int output = Convert.ToInt32(Console.ReadLine());
-    return output;
-}
 
 void WriteArray(int[,,] array)
 {
@@ -73,4 +69,3 @@ void CreateArray(int[,,] array)
 CreateArray(array);
 Console.WriteLine("Полученный массив: ");
 WriteArray(array);
-

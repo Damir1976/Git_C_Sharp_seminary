@@ -5,111 +5,98 @@
 //             11 16 15 06
 //             10 09 08 07
 
-// int[,,] Random3dArray( int field, int rows, int columns);
-// int[,,] newArray = new int[field, rows, columns]; //выделяем память под двумерный массив
-// for(int i = 0; i < field; i++) // прохождение по строкам
-// }
-// {
-//     for(int j = 0; j < rows; j++) // прохождение по столбцам
-// {
-//     for(int k = 0; k < columns; k++)
-
-// { newArray[i,j,k] = i + j + k;
-// }
-// }
-// } return newArray;
-// }
-// void Show3dArray(int[,,] array)
-// // показываем двумерный массив
-// { for (int i = 0; i < array.GetLength(0); i++)
-// {
-//     for(int j = 0; j < array.GetLength(1); j++)
-//     {
-//         for(int k = 0; k < array.GetLength(2); k++)
-//         {
-//             Console.Write("[" + i + "," + j + "]" + array[i, j, k] + " ");
-//             }
-//             Console.WriteLine();
-//             }
-//             Console.WriteLine();
-//             }
-//             Console.WriteLine();
-//             }
-//             Console.Write("Input number of field: "); // запросили количество полей
-//             int n = Convert.ToInt32(Console.ReadLine());
-//             Console.Write("Input number of rows: "); // запросили длину строки
-//             int m = Convert.ToInt32(Console.ReadLine());
-//             Console.Write("Input number of columns: "); // запросили количество столбцов
-//             int l = Convert.ToInt32(Console.ReadLine());
-
-//             int[,,] array = Random3dArray(m, n, l);
-
-//             Show3dArray(array);
-
-Console.WriteLine($"Введите размер массива X x Y x Z: ");
-int x = InputNumbers("Введите X: ");
-int y = InputNumbers("Введите Y: ");
-int z = InputNumbers("Введите Z: ");
-//Console.WriteLine($"");
-
-int[,,] array3D = new int[x, y, z];
-CreateArray(array3D);
-WriteArray(array3D);
-
-int InputNumbers(string input)
-{
-    Console.Write(input);
-    int output = Convert.ToInt32(Console.ReadLine());
-    return output;
-}
-
-void WriteArray(int[,,] array3D)
-{
-    for (int i = 0; i < array3D.GetLength(0); i++)
-    {
-        for (int j = 0; j < array3D.GetLength(1); j++)
-        {
-            for (int k = 0; k < array3D.GetLength(2); k++)
-            {
-                Console.Write($"{array3D[i, j, k]} ({i},{j},{k}); ");
-            }
-            Console.WriteLine();
+public static void main(String[] args) {
+        //Заполним массив, количество строк мы обозначим m, а столбцов - n.
+        int m = 5;
+        int n = 5;
+ 
+        //С помощью переменной s задаются числа внутри массива начиная с 1.
+        int s = 1;
+ 
+        //Объявляем и инициализируем массив.
+        int[][] array = new int[m][n];
+ 
+        //Заполняем периметр массива по часовой стрелке.
+        for (int y = 0; y < n; y++) {
+            array[0][y] = s;
+            s++;
         }
-    }
-}
-
-void CreateArray(int[,,] array3D)
-{
-    int[] temp = new int[array3D.GetLength(0) * array3D.GetLength(1) * array3D.GetLength(2)];
-    int number;
-    for (int i = 0; i < temp.GetLength(0); i++)
-    {
-        temp[i] = new Random().Next(10, 100);
-        number = temp[i];
-        if (i >= 1)
-        {
-            for (int j = 0; j < i; j++)
-            {
-                while (temp[i] == temp[j])
-                {
-                    temp[i] = new Random().Next(10, 100);
-                    j = 0;
-                    number = temp[i];
+        for (int x = 1; x < m; x++) {
+            array[x][n - 1] = s;
+            s++;
+        }
+        for (int y = n - 2; y >= 0; y--) {
+            array[m - 1][y] = s;
+            s++;
+        }
+        for (int x = m - 2; x > 0; x--) {
+            array[x][0] = s;
+            s++;
+        }
+ 
+        //Периметр заполнен. Продолжаем заполнять массив и задаём
+        //координаты ячейки, которую необходимо заполнить следующей.
+        int c = 1;
+        int d = 1;
+ 
+        while (s < m * n) {
+            //В Java инициализированный интовый массив заполняется нулями.
+            //Периметр мы заполнили числами, отличными от нулей.
+            //Следующие циклы поочерёдно работают, заполняя ячейки.
+            //Вложенный цикл останавливается, если следующая ячейка имеет 
+            //значение, отличное от ноля. Ячейка, на которой остановился 
+            //цикл, не заполняется.
+ 
+            //Движемся вправо.
+            while (array[c][d + 1] == 0) {
+                array[c][d] = s;
+                s++;
+                d++;
+            }
+ 
+            //Движемся вниз.
+            while (array[c + 1][d] == 0) {
+                array[c][d] = s;
+                s++;
+                c++;
+            }
+ 
+            //Движемся влево.
+            while (array[c][d - 1] == 0) {
+                array[c][d] = s;
+                s++;
+                d--;
+            }
+ 
+            //Движемся вверх.
+            while (array[c - 1][d] == 0) {
+                array[c][d] = s;
+                s++;
+                c--;
+            }
+        }
+ 
+        //При данном решении в центре всегда остаётся незаполненная ячейка.
+        //Убираем её при помощи следующего цикла.
+        for (int x = 0; x < m; x++) {
+            for (int y = 0; y < n; y++) {
+                if (array[x][y] == 0) {
+                    array[x][y] = s;
                 }
-                number = temp[i];
             }
         }
-    }
-    int count = 0;
-    for (int x = 0; x < array3D.GetLength(0); x++)
-    {
-        for (int y = 0; y < array3D.GetLength(1); y++)
-        {
-            for (int z = 0; z < array3D.GetLength(2); z++)
-            {
-                array3D[x, y, z] = temp[count];
-                count++;
+ 
+        //Выводим массив в консоль.
+        for (int x = 0; x < m; x++) {
+            for (int y = 0; y < n; y++) {
+                if (array[x][y] < 10) {
+                    //Два пробела, чтобы в консоли столбцы были ровные.
+                    System.out.print(array[x][y] + ",  ");
+                } else {
+                    System.out.print(array[x][y] + ", ");
+                }
             }
+            System.out.println("");
         }
     }
 }
