@@ -18,4 +18,4 @@ int A(int m, int n)
         return A(m - 1, A(m, n - 1));
 }
 
-Console.Write($"Вычисленная функция Аккермана = {A(m, n)} ");
+Console.Write($"Вычисленная функция Аккермана: A(m,n) = {A(m, n)} ");
